@@ -288,15 +288,30 @@ public class KDCircularProgress: UIView {
             let newPercentLabelX = newDigitLabelX + thumbDigitLabel.intrinsicContentSize().width
             let newPercentLabelFrame = CGRect(x: newPercentLabelX, y: thumbPercentLabelFrame.origin.y, width: thumbPercentLabelFrame.width, height: thumbPercentLabelFrame.height)
             
-            UIView.animateWithDuration(1, animations: {
+            UIView.animateWithDuration(0.1, animations: {
                 self.thumbDigitLabel.frame = newDigitLabelFrame
                 self.thumbPercentLabel.frame = newPercentLabelFrame
             })
         } else {
-            UIView.animateWithDuration(1, animations: {
+            UIView.animateWithDuration(0.1, animations: {
                 self.thumbDigitLabel.frame = self.thumbDigitLabelFrame
                 self.thumbPercentLabel.frame = self.thumbPercentLabelFrame
             })
+        }
+    }
+    
+    private var testX = 1
+    
+    func testDigitLabel() {
+        let digit = 1 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(digit))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            self.thumbDigitLabel.text = "\(self.testX)"
+            self.configureDigitLabelFontSize()
+            self.testX += 1
+            if self.testX != 100 {
+                self.testDigitLabel()
+            }
         }
     }
     

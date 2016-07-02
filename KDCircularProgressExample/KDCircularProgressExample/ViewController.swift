@@ -39,6 +39,8 @@ class ViewController: UIViewController {
         progress.trackColor = .whiteColor()
         progress.center = CGPoint(x: view.center.x, y: view.center.y + 25)
         view.addSubview(progress)
+        
+        progress.testDigitLabel()
     }
     
     @IBAction func sliderDidChangeValue(sender: UISlider) {
