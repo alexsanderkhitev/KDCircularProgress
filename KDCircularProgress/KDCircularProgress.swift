@@ -90,6 +90,7 @@ public class KDCircularProgress: UIView {
                 self.pauseAnimation()
             }
             progressLayer.angle = angle
+            moveThumbView()
         }
     }
     
@@ -195,10 +196,18 @@ public class KDCircularProgress: UIView {
     }
     
     private func thumbCenter(degree: Double) -> CGPoint {
-//        let radius = (CGRectInset(self.bounds, viewInset, viewInset).width * 0.5) - (self.barWidth * 0.5)
-        return Math.pointFromAngle(self.frame, angle: degree, radius: Double(self.radius * 0.9))
+        return Math.pointFromAngle(bounds, angle: degree, radius: Double(self.radius * 0.9))
     }
     
+    private func moveThumbView() {
+        let degree = Math.degreeFromValue(startAngle, value: Float(angle), maxValue: 280, minValue: 130)
+        thumbViewLayout(degree)
+    }
+    
+    private func thumbViewLayout(degree: Double) {
+        thumbView.center = thumbCenter(degree)
+        layer.setNeedsLayout()
+    }
     //
     
     
