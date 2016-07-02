@@ -18,6 +18,10 @@ public class KDCircularProgressThumbViewParameters {
     var size = CGSizeZero
     var borderColor = UIColor.clearColor()
     var borderWidth: CGFloat = 0
+    var digitLabelTextColor = UIColor.whiteColor()
+    var percentLabelTextColor = UIColor.whiteColor()
+    var digitLabelFont = UIFont.systemFontOfSize(14)
+    var percentLabelFont = UIFont.systemFontOfSize(9)
 }
 
 @IBDesignable
@@ -227,7 +231,8 @@ public class KDCircularProgress: UIView {
         // label
         thumbDigitLabel.frame = CGRect(x: 8, y: 11, width: 17, height: 17)
         thumbDigitLabel.text = "68"
-        thumbDigitLabel.font = UIFont.systemFontOfSize(14)
+        thumbDigitLabel.font = parameters.digitLabelFont
+        thumbDigitLabel.textColor = parameters.digitLabelTextColor
         thumbDigitLabel.textAlignment = .Left
         thumbDigitLabel.adjustsFontSizeToFitWidth = true
         
@@ -237,7 +242,8 @@ public class KDCircularProgress: UIView {
         // percent label 
         let percentLabel = UILabel(frame: CGRect(x: 8 + 17, y: 16, width: 8, height: 11))
         percentLabel.text = "%"
-        percentLabel.font = UIFont.systemFontOfSize(9)
+        percentLabel.font = parameters.percentLabelFont
+        percentLabel.textColor = parameters.percentLabelTextColor
         percentLabel.textAlignment = .Left
         thumbView.addSubview(percentLabel)
     }
