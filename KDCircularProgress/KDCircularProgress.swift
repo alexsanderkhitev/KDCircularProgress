@@ -190,13 +190,17 @@ public class KDCircularProgress: UIView {
         }
     }
     
-    // MARK: - thumb functions
+    // MARK: - Thumb view
+    
+    // MARK: - thumb ui elements
     
     private var thumbView: UIView! {
         didSet {
             thumbView.backgroundColor = .redColor()
         }
     }
+    
+    var thumbDigitLabel = UILabel()
     
     private func addThumbView(parameters: KDCircularProgressThumbViewParameters) {
         thumbView = UIView()
@@ -218,6 +222,17 @@ public class KDCircularProgress: UIView {
         thumbView.layer.shadowColor = UIColor.blackColor().CGColor
         thumbView.layer.shadowOpacity = 0.25
         thumbView.layer.shadowOffset = CGSizeMake(0, 2)
+        
+        
+        // label
+        thumbDigitLabel.frame = CGRect(x: 8, y: 11, width: 17, height: 17)
+        thumbDigitLabel.text = "68"
+        thumbDigitLabel.backgroundColor = .grayColor()
+        thumbDigitLabel.font = UIFont.systemFontOfSize(14)
+        thumbDigitLabel.textAlignment = .Left
+        thumbDigitLabel.adjustsFontSizeToFitWidth = true
+        
+        thumbView.addSubview(thumbDigitLabel)
     }
     
     private func thumbCenter(degree: Double) -> CGPoint {
