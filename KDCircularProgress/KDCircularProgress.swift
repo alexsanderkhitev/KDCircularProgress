@@ -205,11 +205,13 @@ public class KDCircularProgress: UIView {
     }
     
     var thumbDigitLabel = UILabel()
+    private var thumbPercentLabel = UILabel()
     
     // MARK: - Thumb var and let
     
     private var thumbParameters = KDCircularProgressThumbViewParameters()
     private var thumbDigitLabelFrame = CGRectZero
+    private var thumbPercentLabelFrame = CGRectZero
     
     // MARK: - thumb functions
     
@@ -242,15 +244,20 @@ public class KDCircularProgress: UIView {
         thumbDigitLabel.textColor = parameters.digitLabelTextColor
         thumbDigitLabel.textAlignment = .Left
         thumbView.addSubview(thumbDigitLabel)
+        
+        // set standard frame
         thumbDigitLabelFrame = thumbDigitLabel.frame
         
         // percent label 
-        let percentLabel = UILabel(frame: CGRect(x: 8 + 18, y: thumbView.bounds.height / 2 - 8.5 + 5, width: 8, height: 11))
-        percentLabel.text = "%"
-        percentLabel.font = parameters.percentLabelFont
-        percentLabel.textColor = parameters.percentLabelTextColor
-        percentLabel.textAlignment = .Left
-        thumbView.addSubview(percentLabel)
+        thumbPercentLabel = UILabel(frame: CGRect(x: 8 + 18, y: thumbView.bounds.height / 2 - 8.5 + 5, width: 8, height: 11))
+        thumbPercentLabel.text = "%"
+        thumbPercentLabel.font = parameters.percentLabelFont
+        thumbPercentLabel.textColor = parameters.percentLabelTextColor
+        thumbPercentLabel.textAlignment = .Left
+        thumbView.addSubview(thumbPercentLabel)
+        
+        // set standard frame 
+        thumbPercentLabelFrame = thumbPercentLabel.frame
     }
     
     private func thumbCenter(degree: Double) -> CGPoint {
@@ -270,14 +277,26 @@ public class KDCircularProgress: UIView {
     private func configureDigitLabelFontSize() {
         if thumbDigitLabel.frame.size.width != thumbDigitLabel.intrinsicContentSize().width {
             let onePercent = thumbDigitLabel.frame.size.height / 100
-            let newPercents = Double(round(Double(thumbDigitLabel.intrinsicContentSize().width / onePercent) * 100) / 100) - 100
+            let newPercents = CGFloat(Double(round(Double(thumbDigitLabel.intrinsicContentSize().width / onePercent) * 100) / 100) - 100)
+            print(newPercents)
             
+            // new parameters 
+            let newDigitLabelX = thumbDigitLabelFrame.origin.x  - thumbDigitLabelFrame.origin.x / 100 * newPercents
+            let newDigitLabelFrame = CGRect(x: newDigitLabelX, y: thumbDigitLabelFrame.origin.y, width: thumbDigitLabel.intrinsicContentSize().width, height: thumbDigitLabel.intrinsicContentSize().height)
+            
+            // 
+            let newPercentLabelX = newDigitLabelX + thumbDigitLabel.intrinsicContentSize().width
+            let newPercentLabelFrame = CGRect(x: newPercentLabelX, y: thumbPercentLabelFrame.origin.y, width: thumbPercentLabelFrame.width, height: thumbPercentLabelFrame.height)
             
             UIView.animateWithDuration(1, animations: {
-                
+                self.thumbDigitLabel.frame = newDigitLabelFrame
+                self.thumbPercentLabel.frame = newPercentLabelFrame
             })
         } else {
-            thumbDigitLabel.frame.size = thumbDigitLabelFrame.size
+            UIView.animateWithDuration(1, animations: {
+                self.thumbDigitLabel.frame = self.thumbDigitLabelFrame
+                self.thumbPercentLabel.frame = self.thumbPercentLabelFrame
+            })
         }
     }
     
