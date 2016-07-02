@@ -275,7 +275,7 @@ public class KDCircularProgress: UIView {
     // MARK: - ui functions 
     
     private func configureDigitLabelFontSize() {
-        if thumbDigitLabel.frame.size.width != thumbDigitLabel.intrinsicContentSize().width {
+        if thumbDigitLabel.text == "100" {
             let onePercent = thumbDigitLabel.frame.size.height / 100
             let newPercents = CGFloat(Double(round(Double(thumbDigitLabel.intrinsicContentSize().width / onePercent) * 100) / 100) - 100)
             print(newPercents)
@@ -309,7 +309,7 @@ public class KDCircularProgress: UIView {
             self.thumbDigitLabel.text = "\(self.testX)"
             self.configureDigitLabelFontSize()
             self.testX += 1
-            if self.testX != 100 {
+            if self.testX <= 100 {
                 self.testDigitLabel()
             }
         }
