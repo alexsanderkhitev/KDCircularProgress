@@ -200,8 +200,9 @@ public class KDCircularProgress: UIView {
     }
     
     private func moveThumbView() {
-        let degree = Math.degreeFromValue(startAngle, value: Float(angle), maxValue: 280, minValue: 130)
-        thumbViewLayout(degree)
+        let degree = Math.pointFromAngle(bounds, angle: angle + 130, radius: Double(radius) * 0.9)//Math.degreeFromValue(startAngle, value: Float(angle), maxValue: 280, minValue: 130)
+//        thumbViewLayout(degree)
+        thumbView.center = degree
     }
     
     private func thumbViewLayout(degree: Double) {
