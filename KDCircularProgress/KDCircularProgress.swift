@@ -209,6 +209,15 @@ public class KDCircularProgress: UIView {
         // border 
         thumbView.layer.borderColor = parameters.borderColor.CGColor
         thumbView.layer.borderWidth = parameters.borderWidth
+        
+        // shadow 
+        let shadowRect = CGRectInset(thumbView.bounds, 0, 2)
+        let shadowPath = UIBezierPath(roundedRect: shadowRect, cornerRadius: parameters.size.height / 2).CGPath
+        
+        thumbView.layer.shadowPath = shadowPath
+        thumbView.layer.shadowColor = UIColor.blackColor().CGColor
+        thumbView.layer.shadowOpacity = 0.25
+        thumbView.layer.shadowOffset = CGSizeMake(0, 2)
     }
     
     private func thumbCenter(degree: Double) -> CGPoint {
