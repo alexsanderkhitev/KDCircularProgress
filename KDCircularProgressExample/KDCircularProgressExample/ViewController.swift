@@ -16,14 +16,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(white: 0.22, alpha: 1)
         
-        progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 250, height: 250))
         progress.startAngle = -90
         progress.progressThickness = 0.2
-        progress.trackThickness = 0.6
+        progress.trackThickness = 0.2
         progress.clockwise = true
         progress.gradientRotateSpeed = 2
         progress.roundedCorners = false
-        progress.glowMode = .Forward
+        progress.glowMode = .NoGlow
         progress.glowAmount = 0.9
         progress.setColors(UIColor.cyanColor() ,UIColor.whiteColor(), UIColor.magentaColor(), UIColor.whiteColor(), UIColor.orangeColor())
         progress.center = CGPoint(x: view.center.x, y: view.center.y + 25)
