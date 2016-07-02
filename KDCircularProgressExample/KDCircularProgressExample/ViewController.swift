@@ -44,8 +44,9 @@ class ViewController: UIViewController {
     @IBAction func sliderDidChangeValue(sender: UISlider) {
         progress.angle = Double(sender.value)
         
-        
-        progress.thumbDigitLabel.text = "\(Double(round(sender.value * 1) / 1))"
+        if sender.value == 360 {
+            progress.thumbDigitLabel.text = "100"
+        }
     }
     
     @IBAction func animateButtonTapped(sender: UIButton) {
