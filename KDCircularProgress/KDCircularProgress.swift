@@ -15,6 +15,7 @@ public enum KDCircularProgressGlowMode {
 public class KDCircularProgressThumbViewParameters {
     var showThumbView = false
     var thumViewBackgroundColor = UIColor.greenColor()
+    var size = CGSizeZero
 }
 
 @IBDesignable
@@ -192,13 +193,14 @@ public class KDCircularProgress: UIView {
     private var thumbView: UIView! {
         didSet {
             thumbView.backgroundColor = .redColor()
-            thumbView.frame.size = CGSize(width: 40, height: 40)
+//            thumbView.frame.size = CGSize(width: 40, height: 40)
             thumbView.layer.cornerRadius = 20
         }
     }
     
     private func addThumbView(parameters: KDCircularProgressThumbViewParameters) {
         thumbView = UIView()
+        thumbView.frame.size = parameters.size
         thumbView.center = thumbCenter(130)
         thumbView.backgroundColor = parameters.thumViewBackgroundColor
         addSubview(thumbView)
