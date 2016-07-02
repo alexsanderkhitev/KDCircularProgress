@@ -12,6 +12,11 @@ public enum KDCircularProgressGlowMode {
     case Forward, Reverse, Constant, NoGlow
 }
 
+public class KDCircularProgressThumbViewParameters {
+    var showThumbView = false
+    var thumViewBackgroundColor = UIColor.greenColor()
+}
+
 @IBDesignable
 public class KDCircularProgress: UIView {
     
@@ -90,7 +95,10 @@ public class KDCircularProgress: UIView {
                 self.pauseAnimation()
             }
             progressLayer.angle = angle
-            moveThumbView()
+            
+            if thumbParameters.showThumbView == true {
+                moveThumbView()
+            }
         }
     }
     
@@ -189,9 +197,10 @@ public class KDCircularProgress: UIView {
         }
     }
     
-    private func addThumbView() {
+    private func addThumbView(parameters: KDCircularProgressThumbViewParameters) {
         thumbView = UIView()
         thumbView.center = thumbCenter(130)
+        thumbView.backgroundColor = parameters.thumViewBackgroundColor
         addSubview(thumbView)
     }
     
@@ -200,15 +209,11 @@ public class KDCircularProgress: UIView {
     }
     
     private func moveThumbView() {
-        let degree = Math.pointFromAngle(bounds, angle: angle + 130, radius: Double(radius) * 0.9)//Math.degreeFromValue(startAngle, value: Float(angle), maxValue: 280, minValue: 130)
-//        thumbViewLayout(degree)
+        let degree = Math.pointFromAngle(bounds, angle: angle + 130, radius: Double(radius) * 0.9)
         thumbView.center = degree
     }
     
-    private func thumbViewLayout(degree: Double) {
-        thumbView.center = thumbCenter(degree)
-        layer.setNeedsLayout()
-    }
+    private var thumbParameters = KDCircularProgressThumbViewParameters()
     //
     
     
@@ -229,7 +234,22 @@ public class KDCircularProgress: UIView {
         checkAndSetIBColors()
         
         // thumb 
-        addThumbView()
+//        addThumbView()
+    }
+    
+    convenience public init(frame: CGRect, thumbParameters: KDCircularProgressThumbViewParameters) {
+        self.init(frame: frame)
+        userInteractionEnabled = false
+        setInitialValues()
+        refreshValues()
+        checkAndSetIBColors()
+        
+        self.thumbParameters = thumbParameters
+        
+        // thumb
+        if thumbParameters.showThumbView == true {
+            addThumbView(thumbParameters)
+        }
     }
     
     convenience public init(frame:CGRect, colors: UIColor...) {
@@ -245,7 +265,7 @@ public class KDCircularProgress: UIView {
         refreshValues()
         
         // thumb
-        addThumbView()
+//        addThumbView()
     }
     
     public override func awakeFromNib() {
