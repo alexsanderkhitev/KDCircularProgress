@@ -90,7 +90,7 @@ public class KDCircularProgress: UIView {
                 self.pauseAnimation()
             }
             progressLayer.angle = angle
-            thumbView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+            redrawThumbView()
         }
     }
     
@@ -187,14 +187,30 @@ public class KDCircularProgress: UIView {
         didSet {
             thumbView.center = thumbCenter(angle)
             thumbView.backgroundColor = .redColor()
-            thumbView.layer.cornerRadius = 25
-            addSubview(thumbView)
+            thumbView.layer.cornerRadius = 20
         }
     }
     
     private func thumbCenter(degree: Double) -> CGPoint {
         let radius = (CGRectInset(self.bounds, viewInset, viewInset).width * 0.5) - (progressThickness * 0.5)
         return Math.pointFromAngle(self.frame, angle: degree, radius: Double(radius))
+    }
+    
+    private var thumbViewIsAdded = false
+    private var latestAngle: Double = 0
+    
+    private func redrawThumbView() {
+        if thumbViewIsAdded == false {
+            thumbView = UIView()
+            thumbView.frame.size = CGSize(width: 40, height: 40)
+            addSubview(thumbView)
+            thumbViewIsAdded = true
+            latestAngle = angle
+        } else if thumbViewIsAdded == true && angle != latestAngle {
+//            thumbView.removeFromSuperview()
+//            thumbViewIsAdded = false
+            thumbView.center = thumbCenter(angle)
+        }
     }
     
     //These are used only from the Interface-Builder. Changing these from code will have no effect.
