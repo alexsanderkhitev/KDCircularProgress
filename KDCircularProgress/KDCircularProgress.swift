@@ -178,6 +178,22 @@ public class KDCircularProgress: UIView {
         }
     }
     
+    // MARK: - Thumb view 
+
+    private var viewInset: CGFloat = 20
+
+    private var thumbView: UIView! {
+        didSet {
+            thumbView.backgroundColor = .redColor()
+            addSubview(thumbView)
+        }
+    }
+    
+    private func thumbCenter(degree: Double) -> CGPoint {
+        let radius = (CGRectInset(self.bounds, viewInset, viewInset).width * 0.5) - (progressThickness * 0.5)
+        return Math.pointFromAngle(self.frame, angle: degree, radius: Double(radius))
+    }
+    
     //These are used only from the Interface-Builder. Changing these from code will have no effect.
     //Also IB colors are limited to 3, whereas programatically we can have an arbitrary number of them.
     @objc @IBInspectable private var IBColor1: UIColor?
@@ -193,6 +209,7 @@ public class KDCircularProgress: UIView {
         setInitialValues()
         refreshValues()
         checkAndSetIBColors()
+        
     }
     
     convenience public init(frame:CGRect, colors: UIColor...) {
