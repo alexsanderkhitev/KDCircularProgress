@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         thumbParameters.showThumbView = true
         thumbParameters.thumViewBackgroundColor = .greenColor()
         thumbParameters.size = CGSizeMake(40, 40)
+        thumbParameters.borderColor = .whiteColor()
+        thumbParameters.borderWidth = 3
         
         progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 250, height: 250), thumbParameters: thumbParameters)
         progress.startAngle = 130

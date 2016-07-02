@@ -16,6 +16,8 @@ public class KDCircularProgressThumbViewParameters {
     var showThumbView = false
     var thumViewBackgroundColor = UIColor.greenColor()
     var size = CGSizeZero
+    var borderColor = UIColor.clearColor()
+    var borderWidth: CGFloat = 0
 }
 
 @IBDesignable
@@ -203,6 +205,10 @@ public class KDCircularProgress: UIView {
         thumbView.backgroundColor = parameters.thumViewBackgroundColor
         thumbView.layer.cornerRadius = thumbView.frame.size.height / 2
         addSubview(thumbView)
+        
+        // border 
+        thumbView.layer.borderColor = parameters.borderColor.CGColor
+        thumbView.layer.borderWidth = parameters.borderWidth
     }
     
     private func thumbCenter(degree: Double) -> CGPoint {
