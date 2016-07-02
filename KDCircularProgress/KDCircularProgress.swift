@@ -227,12 +227,19 @@ public class KDCircularProgress: UIView {
         // label
         thumbDigitLabel.frame = CGRect(x: 8, y: 11, width: 17, height: 17)
         thumbDigitLabel.text = "68"
-        thumbDigitLabel.backgroundColor = .grayColor()
         thumbDigitLabel.font = UIFont.systemFontOfSize(14)
         thumbDigitLabel.textAlignment = .Left
         thumbDigitLabel.adjustsFontSizeToFitWidth = true
         
         thumbView.addSubview(thumbDigitLabel)
+        
+        
+        // percent label 
+        let percentLabel = UILabel(frame: CGRect(x: 8 + 17, y: 16, width: 8, height: 11))
+        percentLabel.text = "%"
+        percentLabel.font = UIFont.systemFontOfSize(9)
+        percentLabel.textAlignment = .Left
+        thumbView.addSubview(percentLabel)
     }
     
     private func thumbCenter(degree: Double) -> CGPoint {
