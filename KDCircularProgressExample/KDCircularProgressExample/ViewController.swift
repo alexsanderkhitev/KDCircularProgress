@@ -22,6 +22,8 @@ class ViewController: UIViewController {
         thumbParameters.size = CGSizeMake(40, 40)
         thumbParameters.borderColor = .whiteColor()
         thumbParameters.borderWidth = 2
+        thumbParameters.digitLabelTextColor = .blackColor()
+        thumbParameters.percentLabelTextColor = .blackColor()
         
         progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 250, height: 250), thumbParameters: thumbParameters)
         progress.startAngle = 130
@@ -41,6 +43,9 @@ class ViewController: UIViewController {
     
     @IBAction func sliderDidChangeValue(sender: UISlider) {
         progress.angle = Double(sender.value)
+        
+        
+        progress.thumbDigitLabel.text = "\(Double(round(sender.value * 1) / 1))"
     }
     
     @IBAction func animateButtonTapped(sender: UIButton) {
