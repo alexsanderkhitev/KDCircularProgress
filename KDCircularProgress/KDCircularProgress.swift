@@ -229,7 +229,7 @@ public class KDCircularProgress: UIView {
         
         
         // label
-        thumbDigitLabel.frame = CGRect(x: 8, y: 11, width: 17, height: 17)
+        thumbDigitLabel.frame = CGRect(x: 8, y: thumbView.bounds.height / 2 - 8.5, width: 17, height: 17)
         thumbDigitLabel.text = "68"
         thumbDigitLabel.font = parameters.digitLabelFont
         thumbDigitLabel.textColor = parameters.digitLabelTextColor
