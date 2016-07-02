@@ -196,7 +196,7 @@ public class KDCircularProgress: UIView {
     
     private func thumbCenter(degree: Double) -> CGPoint {
 //        let radius = (CGRectInset(self.bounds, viewInset, viewInset).width * 0.5) - (self.barWidth * 0.5)
-        return Math.pointFromAngle(self.frame, angle: degree, radius: Double(self.radius))
+        return Math.pointFromAngle(self.frame, angle: degree, radius: Double(self.radius * 0.9))
     }
     
     //
