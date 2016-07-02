@@ -206,6 +206,10 @@ public class KDCircularProgress: UIView {
     
     var thumbDigitLabel = UILabel()
     
+    // MARK: - Thumb var and let
+    
+    private var thumbParameters = KDCircularProgressThumbViewParameters()
+    
     private func addThumbView(parameters: KDCircularProgressThumbViewParameters) {
         thumbView = UIView()
         thumbView.frame.size = parameters.size
@@ -236,8 +240,6 @@ public class KDCircularProgress: UIView {
         thumbDigitLabel.textAlignment = .Left
         
         thumbView.addSubview(thumbDigitLabel)
-        print(thumbDigitLabel.intrinsicContentSize())
-        
         
         // percent label 
         let percentLabel = UILabel(frame: CGRect(x: 8 + 17, y: thumbView.bounds.height / 2 - 8.5 + 5, width: 8, height: 11))
@@ -255,9 +257,19 @@ public class KDCircularProgress: UIView {
     private func moveThumbView() {
         let degree = Math.pointFromAngle(bounds, angle: angle + 130, radius: Double(radius) * 0.9)
         thumbView.center = degree
+        
+        // function for digit label
+        configureDigitLabelFontSize()
     }
     
-    private var thumbParameters = KDCircularProgressThumbViewParameters()
+    // MARK: - ui functions 
+    
+    private func configureDigitLabelFontSize() {
+        if thumbDigitLabel.text == "100" {
+            print(100)
+        }
+    }
+    
     //
     
     
