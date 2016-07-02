@@ -245,7 +245,7 @@ public class KDCircularProgress: UIView {
         thumbDigitLabelFrame = thumbDigitLabel.frame
         
         // percent label 
-        let percentLabel = UILabel(frame: CGRect(x: 8 + 17, y: thumbView.bounds.height / 2 - 8.5 + 5, width: 8, height: 11))
+        let percentLabel = UILabel(frame: CGRect(x: 8 + 18, y: thumbView.bounds.height / 2 - 8.5 + 5, width: 8, height: 11))
         percentLabel.text = "%"
         percentLabel.font = parameters.percentLabelFont
         percentLabel.textColor = parameters.percentLabelTextColor
@@ -269,7 +269,13 @@ public class KDCircularProgress: UIView {
     
     private func configureDigitLabelFontSize() {
         if thumbDigitLabel.frame.size.width != thumbDigitLabel.intrinsicContentSize().width {
-            thumbDigitLabel.frame.size = thumbDigitLabel.intrinsicContentSize()
+            let onePercent = thumbDigitLabel.frame.size.height / 100
+            let newPercents = Double(round(Double(thumbDigitLabel.intrinsicContentSize().width / onePercent) * 100) / 100) - 100
+            
+            
+            UIView.animateWithDuration(1, animations: {
+                
+            })
         } else {
             thumbDigitLabel.frame.size = thumbDigitLabelFrame.size
         }
