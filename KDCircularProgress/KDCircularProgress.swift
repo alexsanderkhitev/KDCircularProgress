@@ -178,6 +178,30 @@ public class KDCircularProgress: UIView {
         }
     }
     
+    // MARK: - thumb functions
+    
+    private var thumbView: UIView! {
+        didSet {
+            thumbView.backgroundColor = .redColor()
+            thumbView.frame.size = CGSize(width: 40, height: 40)
+            thumbView.layer.cornerRadius = 20
+        }
+    }
+    
+    private func addThumbView() {
+        thumbView = UIView()
+        thumbView.center = thumbCenter(130)
+        addSubview(thumbView)
+    }
+    
+    private func thumbCenter(degree: Double) -> CGPoint {
+//        let radius = (CGRectInset(self.bounds, viewInset, viewInset).width * 0.5) - (self.barWidth * 0.5)
+        return Math.pointFromAngle(self.frame, angle: degree, radius: Double(self.radius))
+    }
+    
+    //
+    
+    
     //These are used only from the Interface-Builder. Changing these from code will have no effect.
     //Also IB colors are limited to 3, whereas programatically we can have an arbitrary number of them.
     @objc @IBInspectable private var IBColor1: UIColor?
@@ -193,6 +217,9 @@ public class KDCircularProgress: UIView {
         setInitialValues()
         refreshValues()
         checkAndSetIBColors()
+        
+        // thumb 
+        addThumbView()
     }
     
     convenience public init(frame:CGRect, colors: UIColor...) {
@@ -206,6 +233,9 @@ public class KDCircularProgress: UIView {
         userInteractionEnabled = false
         setInitialValues()
         refreshValues()
+        
+        // thumb
+        addThumbView()
     }
     
     public override func awakeFromNib() {

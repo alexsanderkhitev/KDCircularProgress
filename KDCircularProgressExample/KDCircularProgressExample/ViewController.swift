@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         progress.trackThickness = 0.2
         progress.clockwise = true
         progress.gradientRotateSpeed = 2
-        progress.roundedCorners = false
+        progress.roundedCorners = true 
         progress.glowMode = .NoGlow
         progress.glowAmount = 0.9
         progress.setColors(UIColor.cyanColor() ,UIColor.whiteColor(), UIColor.magentaColor(), UIColor.whiteColor(), UIColor.orangeColor())
