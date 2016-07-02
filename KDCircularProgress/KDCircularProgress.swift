@@ -268,8 +268,7 @@ public class KDCircularProgress: UIView {
     // MARK: - ui functions 
     
     private func configureDigitLabelFontSize() {
-        if thumbDigitLabel.text == "100" {
-            print(100)
+        if thumbDigitLabel.frame.size.width != thumbDigitLabel.intrinsicContentSize().width {
             thumbDigitLabel.frame.size = thumbDigitLabel.intrinsicContentSize()
         } else {
             thumbDigitLabel.frame.size = thumbDigitLabelFrame.size
