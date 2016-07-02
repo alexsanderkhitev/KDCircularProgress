@@ -193,8 +193,6 @@ public class KDCircularProgress: UIView {
     private var thumbView: UIView! {
         didSet {
             thumbView.backgroundColor = .redColor()
-//            thumbView.frame.size = CGSize(width: 40, height: 40)
-            thumbView.layer.cornerRadius = 20
         }
     }
     
@@ -203,6 +201,7 @@ public class KDCircularProgress: UIView {
         thumbView.frame.size = parameters.size
         thumbView.center = thumbCenter(130)
         thumbView.backgroundColor = parameters.thumViewBackgroundColor
+        thumbView.layer.cornerRadius = thumbView.frame.size.height / 2
         addSubview(thumbView)
     }
     
