@@ -230,14 +230,14 @@ public class KDCircularProgress: UIView {
         
         // label
         thumbDigitLabel.frame = CGRect(x: 8, y: thumbView.bounds.height / 2 - 8.5, width: 17, height: 17)
-        thumbDigitLabel.text = "68"
+        thumbDigitLabel.text = "88"
         thumbDigitLabel.font = parameters.digitLabelFont
         thumbDigitLabel.textColor = parameters.digitLabelTextColor
         thumbDigitLabel.textAlignment = .Left
         thumbDigitLabel.adjustsFontSizeToFitWidth = true
         
         thumbView.addSubview(thumbDigitLabel)
-        print(thumbDigitLabel.font)
+        print(thumbDigitLabel.intrinsicContentSize())
         
         
         // percent label 
