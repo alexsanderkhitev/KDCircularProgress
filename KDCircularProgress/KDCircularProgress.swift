@@ -90,6 +90,7 @@ public class KDCircularProgress: UIView {
                 self.pauseAnimation()
             }
             progressLayer.angle = angle
+            thumbView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         }
     }
     
@@ -184,7 +185,9 @@ public class KDCircularProgress: UIView {
 
     private var thumbView: UIView! {
         didSet {
+            thumbView.center = thumbCenter(angle)
             thumbView.backgroundColor = .redColor()
+            thumbView.layer.cornerRadius = 25
             addSubview(thumbView)
         }
     }
