@@ -46,6 +46,8 @@ class ViewController: UIViewController {
         
         if sender.value == 360 {
             progress.thumbDigitLabel.text = "100"
+        } else {
+            progress.thumbDigitLabel.text = "68"
         }
     }
     
