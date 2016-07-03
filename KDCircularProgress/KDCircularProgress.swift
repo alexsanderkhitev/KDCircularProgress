@@ -22,6 +22,8 @@ public class KDCircularProgressThumbViewParameters {
     var percentLabelTextColor = UIColor.whiteColor()
     var digitLabelFont = UIFont.systemFontOfSize(14)
     var percentLabelFont = UIFont.systemFontOfSize(9)
+    
+    init() { }
 }
 
 @IBDesignable
