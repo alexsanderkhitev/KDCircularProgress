@@ -206,7 +206,7 @@ public class KDCircularProgress: UIView {
         }
     }
     
-    var thumbDigitLabel = UILabel()
+    public var thumbDigitLabel = UILabel()
     private var thumbPercentLabel = UILabel()
     
     // MARK: - Thumb var and let
@@ -214,8 +214,32 @@ public class KDCircularProgress: UIView {
     private var thumbParameters = KDCircularProgressThumbViewParameters()
     private var thumbDigitLabelFrame = CGRectZero
     private var thumbPercentLabelFrame = CGRectZero
+    private var thumbViewIsAdded = false
     
     // MARK: - thumb functions
+    
+    
+    // MARK: - position thumb view
+    public func showThumbView(thumbParameter: KDCircularProgressThumbViewParameters) {
+        if (thumbViewIsAdded == false) {
+            thumbViewIsAdded = true
+            //            let thumbParameter = KDCircularProgressThumbViewParameters()
+            //            thumbParameter.showThumbView = true
+            //            thumbParameter.thumViewBackgroundColor = .greenColor()
+            //            thumbParameter.size = CGSizeMake(40, 40)
+            //            thumbParameter.borderColor = .whiteColor()
+            //            thumbParameter.borderWidth = 2
+            //            thumbParameter.digitLabelTextColor = .blackColor()
+            //            thumbParameter.percentLabelTextColor = .blackColor()
+            addThumbView(thumbParameter)
+        }
+    }
+    
+    public func setThumbViewPositions(degrees: Double) {
+        if thumbViewIsAdded == true {
+            thumbView.center = thumbCenter(degrees)
+        }
+    }
     
     private func addThumbView(parameters: KDCircularProgressThumbViewParameters) {
         thumbView = UIView()
@@ -225,11 +249,11 @@ public class KDCircularProgress: UIView {
         thumbView.layer.cornerRadius = thumbView.frame.size.height / 2
         addSubview(thumbView)
         
-        // border 
+        // border
         thumbView.layer.borderColor = parameters.borderColor.CGColor
         thumbView.layer.borderWidth = parameters.borderWidth
         
-        // shadow 
+        // shadow
         let shadowRect = CGRectInset(thumbView.bounds, 0, 2)
         let shadowPath = UIBezierPath(roundedRect: shadowRect, cornerRadius: parameters.size.height / 2).CGPath
         
@@ -250,7 +274,7 @@ public class KDCircularProgress: UIView {
         // set standard frame
         thumbDigitLabelFrame = thumbDigitLabel.frame
         
-        // percent label 
+        // percent label
         thumbPercentLabel = UILabel(frame: CGRect(x: 8 + 18, y: thumbView.bounds.height / 2 - 8.5 + 5, width: 8, height: 11))
         thumbPercentLabel.text = "%"
         thumbPercentLabel.font = parameters.percentLabelFont
@@ -258,8 +282,9 @@ public class KDCircularProgress: UIView {
         thumbPercentLabel.textAlignment = .Left
         thumbView.addSubview(thumbPercentLabel)
         
-        // set standard frame 
+        // set standard frame
         thumbPercentLabelFrame = thumbPercentLabel.frame
+        
     }
     
     private func thumbCenter(degree: Double) -> CGPoint {
@@ -274,7 +299,16 @@ public class KDCircularProgress: UIView {
         configureDigitLabelFontSize()
     }
     
-    // MARK: - ui functions 
+    public func moveThumbView(angle: Double) {
+        let degree = Math.pointFromAngle(bounds, angle: angle + 130, radius: Double(radius) * 0.9)
+        thumbView.center = degree
+        
+        // function for digit label
+        configureDigitLabelFontSize()
+    }
+    
+    
+    // MARK: - ui functions
     
     private func configureDigitLabelFontSize() {
         if thumbDigitLabel.text == "100" {
@@ -282,11 +316,11 @@ public class KDCircularProgress: UIView {
             let newPercents = CGFloat(Double(round(Double(thumbDigitLabel.intrinsicContentSize().width / onePercent) * 100) / 100) - 100)
             print(newPercents)
             
-            // new parameters 
+            // new parameters
             let newDigitLabelX = thumbDigitLabelFrame.origin.x  - thumbDigitLabelFrame.origin.x / 100 * newPercents
             let newDigitLabelFrame = CGRect(x: newDigitLabelX, y: thumbDigitLabelFrame.origin.y, width: thumbDigitLabel.intrinsicContentSize().width, height: thumbDigitLabel.intrinsicContentSize().height)
             
-            // 
+            //
             let newPercentLabelX = newDigitLabelX + thumbDigitLabel.intrinsicContentSize().width
             let newPercentLabelFrame = CGRect(x: newPercentLabelX, y: thumbPercentLabelFrame.origin.y, width: thumbPercentLabelFrame.width, height: thumbPercentLabelFrame.height)
             
@@ -336,8 +370,8 @@ public class KDCircularProgress: UIView {
         refreshValues()
         checkAndSetIBColors()
         
-        // thumb 
-//        addThumbView()
+        // thumb
+        //        addThumbView()
     }
     
     convenience public init(frame: CGRect, thumbParameters: KDCircularProgressThumbViewParameters) {
@@ -368,7 +402,7 @@ public class KDCircularProgress: UIView {
         refreshValues()
         
         // thumb
-//        addThumbView()
+        //        addThumbView()
     }
     
     public override func awakeFromNib() {
