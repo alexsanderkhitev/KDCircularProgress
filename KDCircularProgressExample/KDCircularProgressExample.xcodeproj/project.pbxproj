@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95B5FB3E1D27B88F009D2D06 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5FB3D1D27B88F009D2D06 /* Math.swift */; };
+		95E9B36A1D28FACE00CEC67E /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9B3691D28FACE00CEC67E /* Math.swift */; };
 		BC9E758C1A8CE4A500B1DF3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E758B1A8CE4A500B1DF3D /* AppDelegate.swift */; };
 		BC9E758E1A8CE4A500B1DF3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E758D1A8CE4A500B1DF3D /* ViewController.swift */; };
 		BC9E75911A8CE4A500B1DF3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9E758F1A8CE4A500B1DF3D /* Main.storyboard */; };
@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		95B5FB3D1D27B88F009D2D06 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		95E9B3691D28FACE00CEC67E /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		BC9E75861A8CE4A500B1DF3D /* KDCircularProgressExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KDCircularProgressExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC9E758A1A8CE4A500B1DF3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC9E758B1A8CE4A500B1DF3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				BC9E75AC1A8CE4CC00B1DF3D /* KDCircularProgress.swift */,
-				95B5FB3D1D27B88F009D2D06 /* Math.swift */,
+				95E9B3691D28FACE00CEC67E /* Math.swift */,
 			);
 			name = KDCircularProgress;
 			path = ..;
@@ -229,9 +229,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC9E75AD1A8CE4CC00B1DF3D /* KDCircularProgress.swift in Sources */,
-				95B5FB3E1D27B88F009D2D06 /* Math.swift in Sources */,
 				BC9E758E1A8CE4A500B1DF3D /* ViewController.swift in Sources */,
 				BC9E758C1A8CE4A500B1DF3D /* AppDelegate.swift in Sources */,
+				95E9B36A1D28FACE00CEC67E /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
