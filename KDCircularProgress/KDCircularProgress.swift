@@ -81,7 +81,11 @@ public class KDCircularProgress: UIView {
             } else if value < min {
                 return Mod(value + range, range: range, minMax: minMax)
             } else {
-                return Mod(value - range, range: range, minMax: minMax)
+                if !value.isNaN {
+                    return Mod(value - range, range: range, minMax: minMax)
+                } else {
+                    return Mod(0 - range, range: range, minMax: minMax)
+                }
             }
         }
     }
