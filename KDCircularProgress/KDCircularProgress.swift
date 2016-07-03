@@ -13,15 +13,15 @@ public enum KDCircularProgressGlowMode {
 }
 
 public class KDCircularProgressThumbViewParameters {
-    var showThumbView = false
-    var thumViewBackgroundColor = UIColor.greenColor()
-    var size = CGSizeZero
-    var borderColor = UIColor.clearColor()
-    var borderWidth: CGFloat = 0
-    var digitLabelTextColor = UIColor.whiteColor()
-    var percentLabelTextColor = UIColor.whiteColor()
-    var digitLabelFont = UIFont.systemFontOfSize(14)
-    var percentLabelFont = UIFont.systemFontOfSize(9)
+    public var showThumbView = false
+    public var thumViewBackgroundColor = UIColor.greenColor()
+    public var size = CGSizeZero
+    public var borderColor = UIColor.clearColor()
+    public var borderWidth: CGFloat = 0
+    public var digitLabelTextColor = UIColor.whiteColor()
+    public var percentLabelTextColor = UIColor.whiteColor()
+    public var digitLabelFont = UIFont.systemFontOfSize(14)
+    public var percentLabelFont = UIFont.systemFontOfSize(9)
     
     public init() { }
 }
