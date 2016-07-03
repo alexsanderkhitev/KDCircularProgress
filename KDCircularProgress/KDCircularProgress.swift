@@ -23,7 +23,7 @@ public class KDCircularProgressThumbViewParameters {
     var digitLabelFont = UIFont.systemFontOfSize(14)
     var percentLabelFont = UIFont.systemFontOfSize(9)
     
-    init() { }
+    public init() { }
 }
 
 @IBDesignable
