@@ -304,13 +304,22 @@ public class KDCircularProgress: UIView {
     }
     
     public func moveThumbView(angle: Double) {
-        let degree = Math.pointFromAngle(bounds, angle: angle + 130, radius: Double(radius) * 0.9)
+        let rect = CGRect(x: 0, y: 0, width: 170, height: 170)
+        let degree = Math.pointFromAngle(rect, angle: angle + 130, radius: Double(rect.height / 2) * 0.9)
         thumbView.center = degree
         
         // function for digit label
         configureDigitLabelFontSize()
     }
     
+    // original
+    //    public func moveThumbView(angle: Double) {
+    //        let degree = Math.pointFromAngle(bounds, angle: angle + 130, radius: Double(radius) * 0.9)
+    //        thumbView.center = degree
+    //
+    //        // function for digit label
+    //        configureDigitLabelFontSize()
+    //    }
     
     // MARK: - ui functions
     
