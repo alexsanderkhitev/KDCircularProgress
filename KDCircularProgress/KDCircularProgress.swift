@@ -349,6 +349,28 @@ public class KDCircularProgress: UIView {
         //        }
     }
     
+    
+    // MARK: - sizing
+    
+    public func makeBiggerThumbViewSize() {
+        let newFrame = CGRect(x: thumbView.bounds.origin.x - thumbView.bounds.origin.x / 100 * 10, y: thumbView.bounds.origin.y - thumbView.bounds.origin.y / 100 * 10, width: 44, height: 44)
+        thumbView.bounds = newFrame
+        thumbView.layer.cornerRadius = 22
+        
+        // label
+        thumbDigitLabel.frame = CGRect(x: 0, y: thumbView.bounds.height / 2 - 9 - 0.9, width: thumbView.bounds.width, height: 17)
+        
+    }
+    
+    public func makeStandardThumbViewSize() {
+        let standrdFrame = CGRect(x: thumbView.bounds.origin.x / 90 * 100, y: thumbView.bounds.origin.y / 90 * 100, width: 40, height: 40)
+        thumbView.bounds = standrdFrame
+        thumbView.layer.cornerRadius = 20
+        
+        
+        thumbDigitLabel.frame = CGRect(x: 0, y: thumbView.bounds.height / 2 - 9, width: thumbView.bounds.width, height: 17)
+    }
+    
     private var testX = 1
     
     func testDigitLabel() {
