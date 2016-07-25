@@ -352,43 +352,6 @@ public class KDCircularProgress: UIView {
     
     // MARK: - sizing
     
-    public func makeBiggerThumbViewSize() {
-        let newFrame = CGRect(x: thumbView.bounds.origin.x - thumbView.bounds.origin.x / 100 * 10, y: thumbView.bounds.origin.y - thumbView.bounds.origin.y / 100 * 10, width: 44, height: 44)
-        thumbView.bounds = newFrame
-        thumbView.layer.cornerRadius = 22
-        
-        // label
-        thumbDigitLabel.frame = CGRect(x: 0, y: thumbView.bounds.height / 2 - 9 - 0.9, width: thumbView.bounds.width, height: 17)
-        
-    }
-    
-    public func makeStandardThumbViewSize() {
-        let standrdFrame = CGRect(x: thumbView.bounds.origin.x / 90 * 100, y: thumbView.bounds.origin.y / 90 * 100, width: 40, height: 40)
-        thumbView.bounds = standrdFrame
-        thumbView.layer.cornerRadius = 20
-        
-        
-        thumbDigitLabel.frame = CGRect(x: 0, y: thumbView.bounds.height / 2 - 9, width: thumbView.bounds.width, height: 17)
-    }
-    
-    private var testX = 1
-    
-    func testDigitLabel() {
-        let digit = 1 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(digit))
-        dispatch_after(time, dispatch_get_main_queue()) {
-            self.thumbDigitLabel.text = "\(self.testX)"
-            self.configureDigitLabelFontSize()
-            self.testX += 1
-            if self.testX <= 100 {
-                self.testDigitLabel()
-            }
-        }
-    }
-    
-    //
-    
-    
     //These are used only from the Interface-Builder. Changing these from code will have no effect.
     //Also IB colors are limited to 3, whereas programatically we can have an arbitrary number of them.
     @objc @IBInspectable private var IBColor1: UIColor?
